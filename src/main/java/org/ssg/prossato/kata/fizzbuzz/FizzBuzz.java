@@ -1,10 +1,20 @@
 package org.ssg.prossato.kata.fizzbuzz;
 
 public class FizzBuzz {
-    public int fizzBuzz(int i) {
-        if (i == 2) {
-            return 2;
+
+    private static final String FIZZ = "fizz";
+    private static final String BUZZ = "buzz";
+
+    public String fizzBuzz(int i) {
+        if (i % 15 == 0) {
+            return FIZZ + BUZZ;
         }
-        return 1;
+        if (i % 3 == 0) {
+            return FIZZ;
+        }
+        if (i % 5 == 0) {
+            return BUZZ;
+        }
+        return String.valueOf(i);
     }
 }
