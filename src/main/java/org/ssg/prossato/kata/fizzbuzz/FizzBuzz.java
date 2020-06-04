@@ -6,15 +6,16 @@ public class FizzBuzz {
     private static final String BUZZ = "buzz";
 
     public String fizzBuzz(int i) {
-        if (i % 15 == 0) {
+        if (isMultipleOf(i, 15))
             return FIZZ + BUZZ;
-        }
-        if (i % 3 == 0) {
+        if (isMultipleOf(i, 3))
             return FIZZ;
-        }
-        if (i % 5 == 0) {
+        if (isMultipleOf(i, 5))
             return BUZZ;
-        }
         return String.valueOf(i);
+    }
+
+    private boolean isMultipleOf(int number, int factor) {
+        return number % factor == 0;
     }
 }
