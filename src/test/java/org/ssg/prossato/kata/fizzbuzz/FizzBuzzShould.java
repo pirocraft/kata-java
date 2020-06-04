@@ -10,6 +10,13 @@ public class FizzBuzzShould {
     public void return_1_when_1() {
         FizzBuzz fizzBuzz = new FizzBuzz();
 
-        assertThat(fizzBuzz.next()).isEqualTo(1);
+        assertThat(fizzBuzz.fizzBuzz(1)).isEqualTo(1);
+    }
+
+    @Test
+    public void return_2_when_2() {
+        FizzBuzz fizzBuzz = new FizzBuzz();
+
+        assertThat(fizzBuzz.fizzBuzz(2)).isEqualTo(2);
     }
 }
