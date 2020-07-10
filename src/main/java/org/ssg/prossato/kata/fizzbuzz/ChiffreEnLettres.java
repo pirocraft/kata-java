@@ -1,6 +1,5 @@
 package org.ssg.prossato.kata.fizzbuzz;
 
-import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,15 +28,18 @@ public class ChiffreEnLettres {
     }
 
     public String enLettres(int nombre) {
-        if (nombre == 17) {
-            return mappingNombreEnMot.get(10) + SEPARATEUR + mappingNombreEnMot.get(7);
-        }
-        if (nombre == 18) {
-            return mappingNombreEnMot.get(10) + SEPARATEUR + mappingNombreEnMot.get(8);
-        }
-        if (nombre == 19) {
-            return mappingNombreEnMot.get(10) + SEPARATEUR + mappingNombreEnMot.get(9);
-        }
+        if (nombreSimpleEnMots(nombre) != null)
+            return nombreSimpleEnMots(nombre);
+
+        return nombreComplexeEnMots(nombre);
+    }
+
+    private String nombreSimpleEnMots(int nombre) {
         return mappingNombreEnMot.get(nombre);
+    }
+
+    private String nombreComplexeEnMots(int nombre) {
+        return nombreSimpleEnMots(Integer.parseInt(String.valueOf(nombre).charAt(0) + "0"))
+                + SEPARATEUR + nombreSimpleEnMots(Integer.parseInt(String.valueOf(nombre).substring(1)));
     }
 }
