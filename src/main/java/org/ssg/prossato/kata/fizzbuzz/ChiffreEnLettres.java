@@ -49,11 +49,11 @@ public class ChiffreEnLettres {
 
     private String nombreComplexeEnMots(int nombre) {
         String nombreEnString = String.valueOf(nombre);
-        if (nombreEnString.length() == 2) {
+        if (nombreSimpleEnMots(nombre) != null || nombreEnString.length() == 1) {
+            return nombreSimpleEnMots(nombre);
+        } else if (nombreEnString.length() == 2) {
             return nombreSimpleEnMots(Integer.parseInt(nombreEnString.charAt(0) + "0"))
                     + SEPARATEUR + nombreSimpleEnMots(Integer.parseInt(nombreEnString.substring(1)));
-        } else if (nombreEnString.length() == 1) {
-            return nombreSimpleEnMots(nombre);
         }
 
         return nombreSimpleEnMots(Integer.parseInt(nombreEnString.charAt(0) + "00"))
