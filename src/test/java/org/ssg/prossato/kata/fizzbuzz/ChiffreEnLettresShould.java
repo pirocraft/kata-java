@@ -50,4 +50,9 @@ class ChiffreEnLettresShould {
         assertThat(chiffreEnLettres.enLettres(45)).isEqualTo("quarante-cinq");
         assertThat(chiffreEnLettres.enLettres(69)).isEqualTo("soixante-neuf");
     }
+
+    @Test
+    void renvoyer_nombre_quand_nom_compose_3_digit() {
+        assertThat(chiffreEnLettres.enLettres(101)).isEqualTo("cent-un");
+    }
 }

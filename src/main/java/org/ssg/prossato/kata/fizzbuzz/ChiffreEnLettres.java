@@ -48,7 +48,15 @@ public class ChiffreEnLettres {
     }
 
     private String nombreComplexeEnMots(int nombre) {
-        return nombreSimpleEnMots(Integer.parseInt(String.valueOf(nombre).charAt(0) + "0"))
-                + SEPARATEUR + nombreSimpleEnMots(Integer.parseInt(String.valueOf(nombre).substring(1)));
+        String nombreEnString = String.valueOf(nombre);
+        if (nombreEnString.length() == 2) {
+            return nombreSimpleEnMots(Integer.parseInt(nombreEnString.charAt(0) + "0"))
+                    + SEPARATEUR + nombreSimpleEnMots(Integer.parseInt(nombreEnString.substring(1)));
+        } else if (nombreEnString.length() == 1) {
+            return nombreSimpleEnMots(nombre);
+        }
+
+        return nombreSimpleEnMots(Integer.parseInt(nombreEnString.charAt(0) + "00"))
+                + SEPARATEUR + nombreComplexeEnMots(Integer.parseInt(nombreEnString.substring(1)));
     }
 }
