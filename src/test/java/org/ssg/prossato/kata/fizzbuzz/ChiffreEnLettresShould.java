@@ -57,5 +57,9 @@ class ChiffreEnLettresShould {
         assertThat(chiffreEnLettres.enLettres(104)).isEqualTo("cent-quatre");
         assertThat(chiffreEnLettres.enLettres(109)).isEqualTo("cent-neuf");
         assertThat(chiffreEnLettres.enLettres(110)).isEqualTo("cent-dix");
+        assertThat(chiffreEnLettres.enLettres(111)).isEqualTo("cent-onze");
+        assertThat(chiffreEnLettres.enLettres(115)).isEqualTo("cent-quinze");
+        assertThat(chiffreEnLettres.enLettres(116)).isEqualTo("cent-seize");
+        assertThat(chiffreEnLettres.enLettres(117)).isEqualTo("cent-dix-sept");
     }
 }
