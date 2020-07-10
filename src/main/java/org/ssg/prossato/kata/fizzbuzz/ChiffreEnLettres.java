@@ -28,6 +28,12 @@ public class ChiffreEnLettres {
         mappingNombreEnMot.put(20, "vingt");
         mappingNombreEnMot.put(30, "trente");
         mappingNombreEnMot.put(40, "quarante");
+        mappingNombreEnMot.put(50, "cinquante");
+        mappingNombreEnMot.put(60, "soixante");
+        mappingNombreEnMot.put(70, "soixante-dix");
+        mappingNombreEnMot.put(80, "quatre-vingts");
+        mappingNombreEnMot.put(90, "quatre-vingt-dix");
+        mappingNombreEnMot.put(100, "cent");
     }
 
     public String enLettres(int nombre) {
