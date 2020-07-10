@@ -25,6 +25,9 @@ public class ChiffreEnLettres {
         mappingNombreEnMot.put(14, "quatorze");
         mappingNombreEnMot.put(15, "quinze");
         mappingNombreEnMot.put(16, "seize");
+        mappingNombreEnMot.put(20, "vingt");
+        mappingNombreEnMot.put(30, "trente");
+        mappingNombreEnMot.put(40, "quarante");
     }
 
     public String enLettres(int nombre) {

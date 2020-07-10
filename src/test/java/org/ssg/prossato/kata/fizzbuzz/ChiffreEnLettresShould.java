@@ -32,6 +32,9 @@ class ChiffreEnLettresShould {
         assertThat(chiffreEnLettres.enLettres(14)).isEqualTo("quatorze");
         assertThat(chiffreEnLettres.enLettres(15)).isEqualTo("quinze");
         assertThat(chiffreEnLettres.enLettres(16)).isEqualTo("seize");
+        assertThat(chiffreEnLettres.enLettres(20)).isEqualTo("vingt");
+        assertThat(chiffreEnLettres.enLettres(30)).isEqualTo("trente");
+        assertThat(chiffreEnLettres.enLettres(40)).isEqualTo("quarante");
     }
 
     @Test
@@ -39,5 +42,7 @@ class ChiffreEnLettresShould {
         assertThat(chiffreEnLettres.enLettres(17)).isEqualTo("dix-sept");
         assertThat(chiffreEnLettres.enLettres(18)).isEqualTo("dix-huit");
         assertThat(chiffreEnLettres.enLettres(19)).isEqualTo("dix-neuf");
+        assertThat(chiffreEnLettres.enLettres(38)).isEqualTo("trente-huit");
+        assertThat(chiffreEnLettres.enLettres(45)).isEqualTo("quarante-cinq");
     }
 }
