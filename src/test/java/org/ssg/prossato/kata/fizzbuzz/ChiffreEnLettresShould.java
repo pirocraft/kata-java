@@ -32,6 +32,8 @@ class ChiffreEnLettresShould {
         assertThat(chiffreEnLettres.enLettres(14)).isEqualTo("quatorze");
         assertThat(chiffreEnLettres.enLettres(15)).isEqualTo("quinze");
         assertThat(chiffreEnLettres.enLettres(16)).isEqualTo("seize");
-//        assertThat(chiffreEnLettres.enLettres(17)).isEqualTo("dix-sept");
+        assertThat(chiffreEnLettres.enLettres(17)).isEqualTo("dix-sept");
+        assertThat(chiffreEnLettres.enLettres(18)).isEqualTo("dix-huit");
+        assertThat(chiffreEnLettres.enLettres(19)).isEqualTo("dix-neuf");
     }
 }

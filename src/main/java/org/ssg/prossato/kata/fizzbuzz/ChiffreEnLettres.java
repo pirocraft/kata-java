@@ -6,6 +6,8 @@ import java.util.Map;
 
 public class ChiffreEnLettres {
     private static final Map<Integer, String> mappingNombreEnMot;
+    private static final String SEPARATEUR = "-";
+
     static {
         mappingNombreEnMot = new HashMap<>(100);
         mappingNombreEnMot.put(1, "un");
@@ -27,6 +29,15 @@ public class ChiffreEnLettres {
     }
 
     public String enLettres(int nombre) {
+        if (nombre == 17) {
+            return mappingNombreEnMot.get(10) + SEPARATEUR + mappingNombreEnMot.get(7);
+        }
+        if (nombre == 18) {
+            return mappingNombreEnMot.get(10) + SEPARATEUR + mappingNombreEnMot.get(8);
+        }
+        if (nombre == 19) {
+            return mappingNombreEnMot.get(10) + SEPARATEUR + mappingNombreEnMot.get(9);
+        }
         return mappingNombreEnMot.get(nombre);
     }
 }
