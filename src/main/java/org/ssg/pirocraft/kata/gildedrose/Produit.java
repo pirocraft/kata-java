@@ -4,6 +4,7 @@ import java.util.UUID;
 
 public class Produit {
     private UUID identifiant;
+    private String nom;
     private int qualite;
     private int venduDans;
 
@@ -16,6 +17,14 @@ public class Produit {
 
     public UUID getIdentifiant() {
         return identifiant;
+    }
+
+    public String getNom() {
+        return nom;
+    }
+
+    public void setNom(String nom) {
+        this.nom = nom;
     }
 
     public void setQualite(int qualite) {

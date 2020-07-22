@@ -26,11 +26,13 @@ class CommerceDoit {
         commerce = new Commerce(produitRepository);
 
         Produit figurineBatman = new Produit(idFigurineBatman);
+        figurineBatman.setNom("Batman");
         figurineBatman.setQualite(QUALITE_FIGURINE_BATMAN);
         figurineBatman.setVenduDans(FIGURINE_BATMAN_VENDU_DANS);
         produitRepository.save(figurineBatman);
 
         Produit taser = new Produit(idTaser);
+        taser.setNom("Taser");
         taser.setQualite(QUALITE_TASER);
         taser.setVenduDans(TASER_VENDU_DANS);
         produitRepository.save(taser);
