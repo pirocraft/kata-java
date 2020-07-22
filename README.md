@@ -3,28 +3,27 @@ La master est un projet vide pour lancer des TU avec Junit 5 + assert J
 Des tags contiennent des exemples de réalisation de Kata
 
 ### GildedRose Kata
-#### Context
-Bonjour ! Nous sommes une petite auberge pour les voyageurs de passage    
-Notre métier est de loger nos hôtes mais nous en profitons pour acheter et vendre les meilleurs produits du quartier  
-Malheureusement, nos produits se dégradent constamment en qualité à mesure qu'ils approchent de leur date de vente  
+Bonjour ! Nous sommes une petite auberge pour les voyageurs de passage.  
+Notre métier est de loger nos hôtes mais nous en profitons pour acheter et vendre les meilleurs produits du quartier.  
+Malheureusement, la qualité de nos produits se dégradent constamment à mesure qu'ils approchent de leur date de vente.  
 
 Nous avons déléguer le travail à deux équipes, une équipe s'occupait du coeur du système tandis qu'une autre
  se charge de l'intégrer dans un environnement qu'elle maitrise sur le bout des doigts.  
-Le covid a ruiné la première équipe et m'a incité à vous confier le coeur de notre système pour le faire évoluer, 
+Le covid a ruiné la première équipe et m'a conseillé de vous confier le coeur de notre système pour le faire évoluer, 
  voici son fonctionnement actuel :  
 
-- Tous les articles ont une valeur VenduDans qui indique le nombre de jours dont nous disposons pour vendre l'article
-- Tous les articles ont une valeur de Qualité qui indique la valeur de l'article
-- À la fin de chaque journée, notre système réduit les deux valeurs pour chaque article
+- Tous les produits ont une valeur VenduDans qui indique le nombre de jours dont nous disposons pour le vendre
+- Tous les produits ont une Qualité qui nous permet d'estimer sa valeur
+- À la fin de chaque journée, notre système réduit les deux valeurs de chaque produit
 
-Plutôt simple non ? Voici quelques règles supplémentaires :  
+La première équipe n'a pas eu le temps d'aller plus loin, pouvez-vous gérer ces cas que nous rencontrons actuellement ?  
 
 - Une fois la date limite de vente passée, la qualité se dégrade deux fois plus vite
-- La qualité d'un article n'est jamais négative
-- La qualité du «Brie âgé» augmente en fait avec l'âge
-- La qualité d'un article n'est jamais supérieure à 50
+- La qualité d'un produit n'est jamais négative
+- La qualité du "Vieux Gruyère" augmente en fait avec l'âge
+- La qualité d'un produit n'est jamais supérieure à 50
 - "Sulfuras", étant un objet légendaire, ne doit jamais être vendu ou la qualité diminue
-- «Backstage pass», comme le brie vieilli, augmente en qualité à mesure que sa valeur SellIn approche;
+- "Pass concert", comme le "Vieux Gruyère", augmente en qualité à mesure que sa valeur VenduDans approche;
 
-Voici enfin les nouvelles règles dont j'ai absolument besoin :
-
+Vous pouvez faire toutes les modifications que vous souhaitez, la précédente équipe nous a donné une seule contrainte, 
+ ne pas modifier l'objet Produit sous peine de transmission immédiate et définitive du covid à votre équipe !
