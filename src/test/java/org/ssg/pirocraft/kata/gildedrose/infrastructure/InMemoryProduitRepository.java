@@ -30,6 +30,7 @@ public class InMemoryProduitRepository implements ProduitRepository {
     private Produit copyProduit(Produit produit) {
         Produit copie = new Produit(produit.getIdentifiant());
         copie.setQualite(produit.getQualite());
+        copie.setVenduDans(produit.getVenduDans());
         return copie;
     }
 }
