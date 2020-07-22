@@ -6,13 +6,21 @@ import java.util.List;
 import java.util.UUID;
 
 /**
- * Dépôt de persistance des {@link Produit}<br>
- * Les modifications apportées aux {@link Produit} sont automatiquement persistées
+ * Dépôt de persistance des {@link Produit}
  */
 public interface ProduitRepository {
-    UUID addProduit(Produit produit);
+    /**
+     * @param produit le {@link Produit} à persister ou à mettre à jour
+     */
+    void save(Produit produit);
 
-    Produit getProduit(UUID idProduit);
+    /**
+     * @return une copie du {@link Produit} persisté
+     */
+    Produit getProduit(UUID identifiantProduit);
 
+    /**
+     * @return une liste de copies des {@link Produit} persistés
+     */
     List<Produit> getProduits();
 }

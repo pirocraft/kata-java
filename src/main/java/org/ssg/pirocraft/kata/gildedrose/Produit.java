@@ -1,7 +1,14 @@
 package org.ssg.pirocraft.kata.gildedrose;
 
+import java.util.UUID;
+
 public class Produit {
+    private UUID identifiant;
     private int qualite;
+
+    public Produit(UUID idFigurineBatman) {
+        this.identifiant = idFigurineBatman;
+    }
 
     public void setQualite(int qualite) {
         this.qualite = qualite;
@@ -9,5 +16,9 @@ public class Produit {
 
     public int getQualite() {
         return qualite;
+    }
+
+    public UUID getIdentifiant() {
+        return identifiant;
     }
 }

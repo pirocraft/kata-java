@@ -15,30 +15,30 @@ class CommerceDoit {
 
     private static final int QUALITE_FIGURINE_BATMAN = 5;
     private static final int QUALITE_TASER = 10;
-    private UUID idFigurineBatman;
-    private UUID idTaser;
+    private UUID idFigurineBatman = UUID.randomUUID();
+    private UUID idTaser = UUID.randomUUID();
 
     @BeforeEach
     void setUp() {
         produitRepository = new InMemoryProduitRepository();
         commerce = new Commerce(produitRepository);
 
-        Produit figurineBatman = new Produit();
+        Produit figurineBatman = new Produit(idFigurineBatman);
         figurineBatman.setQualite(QUALITE_FIGURINE_BATMAN);
-        idFigurineBatman = produitRepository.addProduit(figurineBatman);
+        produitRepository.save(figurineBatman);
 
-        Produit taser = new Produit();
+        Produit taser = new Produit(idTaser);
         taser.setQualite(QUALITE_TASER);
-        idTaser = produitRepository.addProduit(taser);
+        produitRepository.save(taser);
     }
 
     @Test
     void mettre_a_jour_la_qualite_des_produits() {
         commerce.mettreAJour();
 
-        Produit figurineBatmanStockee = produitRepository.getProduit(idFigurineBatman);
-        Produit taserStocke = produitRepository.getProduit(idTaser);
-        assertThat(figurineBatmanStockee.getQualite()).isEqualTo(QUALITE_FIGURINE_BATMAN - 1);
-        assertThat(taserStocke.getQualite()).isEqualTo(QUALITE_TASER - 1);
+        Produit figurineBatman = produitRepository.getProduit(idFigurineBatman);
+        Produit taser = produitRepository.getProduit(idTaser);
+        assertThat(figurineBatman.getQualite()).isEqualTo(QUALITE_FIGURINE_BATMAN - 1);
+        assertThat(taser.getQualite()).isEqualTo(QUALITE_TASER - 1);
     }
 }

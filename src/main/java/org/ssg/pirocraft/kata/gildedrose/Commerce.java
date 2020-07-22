@@ -12,6 +12,7 @@ public class Commerce {
     public void mettreAJour() {
         for (Produit produit : produitRepository.getProduits()) {
             produit.setQualite(produit.getQualite() - 1);
+            produitRepository.save(produit);
         }
     }
 }
