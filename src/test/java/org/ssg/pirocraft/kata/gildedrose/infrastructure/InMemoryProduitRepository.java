@@ -6,7 +6,10 @@ import java.util.*;
 import java.util.stream.Collectors;
 
 /**
- * Stub pour besoin de tests uniquement
+ * Cette implémentation retourne des copies des objets stockés en mémoire pour simuler la persistance externe
+ * des objets sauvegardés
+ *
+ * @see #copyProduit(Produit)
  */
 public class InMemoryProduitRepository implements ProduitRepository {
     private Map<UUID, Produit> produits = new HashMap<>();

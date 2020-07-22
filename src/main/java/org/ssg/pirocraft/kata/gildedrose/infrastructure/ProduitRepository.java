@@ -10,7 +10,7 @@ import java.util.UUID;
  */
 public interface ProduitRepository {
     /**
-     * @param produit le {@link Produit} à persister ou à mettre à jour
+     * @param produit le produit à persister ou à mettre à jour
      */
     void save(Produit produit);
 

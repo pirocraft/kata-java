@@ -7,8 +7,11 @@ public class Produit {
     private int qualite;
     private int venduDans;
 
-    public Produit(UUID idFigurineBatman) {
-        this.identifiant = idFigurineBatman;
+    /**
+     * @param identifiant l'identifiant unique du produit
+     */
+    public Produit(UUID identifiant) {
+        this.identifiant = identifiant;
     }
 
     public UUID getIdentifiant() {
