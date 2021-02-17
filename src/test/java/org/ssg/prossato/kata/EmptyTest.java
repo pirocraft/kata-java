@@ -1,4 +1,4 @@
-package org.ssg.prossato.kata.fizzbuzz;
+package org.ssg.prossato.kata;
 
 import org.junit.jupiter.api.Test;
 
