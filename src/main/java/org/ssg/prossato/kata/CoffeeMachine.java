@@ -8,7 +8,11 @@ public class CoffeeMachine {
     }
 
     public void command(Command command) {
-        drinkMaker.command(command.encodedCommand());
+        if (command.enoughMoney()) {
+            drinkMaker.command(command.encodedCommand());
+        } else {
+            drinkMaker.deliverMessage(command.missingMoney());
+        }
     }
 
 }
