@@ -1,20 +1,20 @@
 package org.ssg.prossato.kata;
 
 public class NumberOfSugar {
-    private final int numberOfSugar;
+    private final int number;
 
-    public NumberOfSugar(int numberOfSugar) {
-        this.numberOfSugar = numberOfSugar;
+    public NumberOfSugar(int number) {
+        this.number = number;
     }
 
-    public String code() {
-        if (numberOfSugar > 0)
-            return String.valueOf(numberOfSugar);
+    String code() {
+        if (number > 0)
+            return String.valueOf(number);
         return "";
     }
 
-    public String stickCode() {
-        if (numberOfSugar >0)
+    String stickCode() {
+        if (number > 0)
             return "0";
         return "";
     }

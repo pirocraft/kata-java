@@ -9,12 +9,12 @@ public class ClientMoney {
         this.money = money;
     }
 
-    public boolean cover(float price) {
+    boolean cover(float price) {
         return money >= price;
     }
 
-    public String missingMoney(float price) {
-        DecimalFormat decimalFormat = new DecimalFormat("#.#");
+    String missingMoney(float price) {
+        var decimalFormat = new DecimalFormat("#.#");
         return decimalFormat.format(price - money).replace(',', '.');
     }
 }

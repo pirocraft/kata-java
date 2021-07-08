@@ -20,11 +20,11 @@ public class Command {
         return drink.code() + ":" + numberOfSugar.code() + ":" + numberOfSugar.stickCode();
     }
 
-    public boolean enoughMoney() {
+    boolean enoughMoney() {
         return clientMoney.cover(drink.price());
     }
 
-    public String missingMoney() {
+    String missingMoney() {
         String missingMoney = clientMoney.missingMoney(drink.price());
         return MessageFormat.format(MISSING_MONEY_PATTERN, missingMoney);
     }

@@ -2,14 +2,12 @@ package org.ssg.prossato.kata;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.ssg.prossato.kata.drinks.Chocolate;
-import org.ssg.prossato.kata.drinks.Coffee;
-import org.ssg.prossato.kata.drinks.Tea;
+import org.ssg.prossato.kata.drinks.*;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNull;
 
-public class CoffeeMachineShould {
+class CoffeeMachineShould {
 
     private DrinkMakerDouble drinkMaker;
     private CoffeeMachine coffeeMachine;
@@ -61,7 +59,6 @@ public class CoffeeMachineShould {
         coffeeMachine.command(new Command(new Coffee(), new NumberOfSugar(0), new ClientMoney(0.6f)));
         assertEquals("C::", drinkMaker.getReceivedCommand());
     }
-
     @Test
     void command_a_coffee_with_one_sugar() {
         coffeeMachine.command(new Command(new Coffee(), new NumberOfSugar(1), new ClientMoney(0.7f)));
@@ -72,6 +69,30 @@ public class CoffeeMachineShould {
     void command_a_coffee_with_two_sugar() {
         coffeeMachine.command(new Command(new Coffee(), new NumberOfSugar(2), new ClientMoney(0.8f)));
         assertEquals("C:2:0", drinkMaker.getReceivedCommand());
+    }
+
+    @Test
+    void command_an_orange_juice() {
+        coffeeMachine.command(new Command(new OrangeJuice(), new NumberOfSugar(0), new ClientMoney(0.8f)));
+        assertEquals("O::", drinkMaker.getReceivedCommand());
+    }
+
+    @Test
+    void command_an_extra_hot_coffee() {
+        coffeeMachine.command(new Command(new ExtraHotCoffee(), new NumberOfSugar(0), new ClientMoney(0.6f)));
+        assertEquals("Ch::", drinkMaker.getReceivedCommand());
+    }
+
+    @Test
+    void command_an_extra_hot_chocolate() {
+        coffeeMachine.command(new Command(new ExtraHotChocolate(), new NumberOfSugar(1), new ClientMoney(0.6f)));
+        assertEquals("Hh:1:0", drinkMaker.getReceivedCommand());
+    }
+
+    @Test
+    void command_an_extra_hot_tea() {
+        coffeeMachine.command(new Command(new ExtraHotTea(), new NumberOfSugar(2), new ClientMoney(0.6f)));
+        assertEquals("Th:2:0", drinkMaker.getReceivedCommand());
     }
 
     @Test
@@ -95,6 +116,12 @@ public class CoffeeMachineShould {
         assertEquals("M:Missing 0.4€", drinkMaker.getDeliveredMessage());
     }
 
+    @Test
+    void refuse_an_orange_juice_command_without_enough_money() {
+        coffeeMachine.command(new Command(new OrangeJuice(), new NumberOfSugar(0), new ClientMoney(0.0f)));
+        assertNull(drinkMaker.getReceivedCommand());
+        assertEquals("M:Missing 0.6€", drinkMaker.getDeliveredMessage());
+    }
 
     private class DrinkMakerDouble implements DrinkMaker {
         private String receivedCommand;
