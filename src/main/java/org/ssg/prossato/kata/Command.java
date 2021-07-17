@@ -28,4 +28,12 @@ public class Command {
         String missingMoney = clientMoney.missingMoney(drink.price());
         return MessageFormat.format(MISSING_MONEY_PATTERN, missingMoney);
     }
+
+    public boolean containsA(Class<? extends Drink> drinkType) {
+        return drink.getClass().equals(drinkType);
+    }
+
+    public float moneyEarned() {
+        return drink.price();
+    }
 }
