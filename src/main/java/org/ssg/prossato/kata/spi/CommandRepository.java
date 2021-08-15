@@ -1,4 +1,6 @@
-package org.ssg.prossato.kata;
+package org.ssg.prossato.kata.spi;
+
+import org.ssg.prossato.kata.Command;
 
 import java.util.List;
 

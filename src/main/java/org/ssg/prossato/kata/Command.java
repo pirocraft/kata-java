@@ -36,4 +36,8 @@ public class Command {
     public float moneyEarned() {
         return drink.price();
     }
+
+    public String drinkCode() {
+        return drink.code();
+    }
 }

@@ -1,4 +1,4 @@
-package org.ssg.prossato.kata;
+package org.ssg.prossato.kata.spi;
 
 public interface DrinkMaker {
     void command(String command);

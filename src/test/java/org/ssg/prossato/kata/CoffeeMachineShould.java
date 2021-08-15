@@ -3,6 +3,7 @@ package org.ssg.prossato.kata;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.ssg.prossato.kata.drinks.*;
+import org.ssg.prossato.kata.spi.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -12,17 +13,25 @@ import static org.junit.jupiter.api.Assertions.assertNull;
 
 class CoffeeMachineShould {
 
+    private static final String SHORTAGE_DELIVERED_MESSAGE = "M:Can't be delivered because of a shortage";
     private DrinkMakerDouble drinkMaker;
     private CoffeeMachine coffeeMachine;
     private ReportPrinterDouble reportPrinter;
     private CommandRepository commandRepository;
+    private boolean beverageShortage = false;
+    private BeverageQuantityCheckerDouble beverageQuantityChecker;
+    private EmailNotifierDouble emailNotifier;
 
     @BeforeEach
     void setUp() {
         drinkMaker = new DrinkMakerDouble();
         reportPrinter = new ReportPrinterDouble();
         commandRepository = new CommandRepositoryDouble();
-        coffeeMachine = new CoffeeMachine(drinkMaker, reportPrinter, commandRepository);
+        beverageQuantityChecker = new BeverageQuantityCheckerDouble();
+        emailNotifier = new EmailNotifierDouble();
+        coffeeMachine = new CoffeeMachine(drinkMaker, reportPrinter,
+                commandRepository, beverageQuantityChecker,
+                emailNotifier);
     }
 
     @Test
@@ -162,6 +171,36 @@ class CoffeeMachineShould {
         assertEquals(0.6f, receivedReport.moneyEarned());
     }
 
+    @Test
+    void inform_the_client_that_he_cant_be_delivered_an_orange_juice_cause_of_a_shortage() {
+        beverageShortage = true;
+        coffeeMachine.command(new Command(new OrangeJuice(), new NumberOfSugar(0), new ClientMoney(0.8f)));
+        assertEquals(SHORTAGE_DELIVERED_MESSAGE, drinkMaker.getDeliveredMessage());
+        assertEquals(new OrangeJuice().code(), beverageQuantityChecker.spiedDrink);
+    }
+
+    @Test
+    void inform_the_client_that_he_cant_be_delivered_a_chocolate_cause_of_a_shortage() {
+        beverageShortage = true;
+        coffeeMachine.command(new Command(new Chocolate(), new NumberOfSugar(0), new ClientMoney(0.8f)));
+        assertEquals(SHORTAGE_DELIVERED_MESSAGE, drinkMaker.getDeliveredMessage());
+        assertEquals(new Chocolate().code(), beverageQuantityChecker.spiedDrink);
+    }
+
+    @Test
+    void notify_the_compagny_that_there_is_a_tea_shortage() {
+        beverageShortage = true;
+        coffeeMachine.command(new Command(new Tea(), new NumberOfSugar(0), new ClientMoney(0.8f)));
+        assertEquals(new Tea().code(), emailNotifier.getMissingDrinkNotified());
+    }
+
+    @Test
+    void notify_the_compagny_that_there_is_a_chocolate_shortage() {
+        beverageShortage = true;
+        coffeeMachine.command(new Command(new Chocolate(), new NumberOfSugar(0), new ClientMoney(0.8f)));
+        assertEquals(new Chocolate().code(), emailNotifier.getMissingDrinkNotified());
+    }
+
     private class DrinkMakerDouble implements DrinkMaker {
         private String receivedCommand;
         private String deliveredMessage;
@@ -210,6 +249,33 @@ class CoffeeMachineShould {
         @Override
         public List<Command> getAllCommands() {
             return commands;
+        }
+    }
+
+    private class BeverageQuantityCheckerDouble implements BeverageQuantityChecker {
+        private String spiedDrink;
+
+        @Override
+        public boolean isEmpty(String drink) {
+            spiedDrink = drink;
+            return beverageShortage;
+        }
+
+        public String getSpiedDrink() {
+            return spiedDrink;
+        }
+    }
+
+    private class EmailNotifierDouble implements EmailNotifier {
+        private String missingDrinkNotified;
+
+        @Override
+        public void notifyMissingDrink(String drink) {
+            this.missingDrinkNotified = drink;
+        }
+
+        public String getMissingDrinkNotified() {
+            return missingDrinkNotified;
         }
     }
 }
